@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NINTENDO SWITCH - PLAYER 1 READY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes scanlines {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 4px;
+            }
+        }
+
+        @keyframes blink {
+            0%, 49% {
+                opacity: 1;
+            }
+            50%, 100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 0 0 10px #e60012, 0 0 20px rgba(230, 0, 18, 0.5);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background: #1a1a2e;
+            color: #00ff00;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            animation: scanlines 8s linear infinite;
+            z-index: 1;
+        }
+
+        header {
+            background: #0a0a15;
+            border: 3px solid #e60012;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: inset 0 0 20px rgba(230, 0, 18, 0.3);
+        }
+
+        .player-tag {
+            display: inline-block;
+            background: #e60012;
+            color: #fff;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.6rem;
+            margin-bottom: 1rem;
+            border: 2px solid #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            animation: flicker 4s infinite;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #00ff00;
+            margin: 0.5rem 0;
+            text-shadow: 2px 2px 0 #e60012, 4px 4px 0 rgba(230, 0, 18, 0.5);
+            letter-spacing: 0.3em;
+            animation: flicker 3s infinite;
+        }
+
+        .pixel-divider {
+            display: inline-block;
+            background: repeating-linear-gradient(
+                90deg,
+                #e60012 0px,
+                #e60012 3px,
+                transparent 3px,
+                transparent 6px
+            );
+            height: 3px;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        .hero {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            margin: 2rem auto;
+            border: 4px solid #e60012;
+            background: #0a0a15;
+            box-shadow:
+                inset 0 0 20px rgba(230, 0, 18, 0.3),
+                0 0 30px rgba(230, 0, 18, 0.5);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.2) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            z-index: 10;
+            pointer-events: none;
+            animation: scanlines 8s linear infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+            display: block;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #00ff00;
+            margin: 1.5rem 0;
+            text-shadow: 2px 2px 0 #e60012;
+            letter-spacing: 0.2em;
+        }
+
+        .hero p {
+            font-size: 0.7rem;
+            color: #e60012;
+            margin: 1rem 0;
+            line-height: 1.8;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .arcade-chips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .chip {
+            background: linear-gradient(135deg, #e60012, #ff4444);
+            border: 3px solid #00ff00;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow:
+                inset 0 0 10px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(230, 0, 18, 0.5);
+            position: relative;
+        }
+
+        .chip::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.3) 0px,
+                rgba(255, 255, 255, 0.3) 2px,
+                transparent 2px,
+                transparent 8px
+            );
+        }
+
+        .chip h3 {
+            font-size: 0.65rem;
+            color: #00ff00;
+            text-shadow: 1px 1px 0 #000;
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+        }
+
+        .chip p {
+            font-size: 0.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .modes {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            background: rgba(10, 10, 21, 0.8);
+        }
+
+        .modes h2 {
+            font-size: 1.2rem;
+            color: #00ff00;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 0 #e60012;
+            letter-spacing: 0.2em;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .mode-card {
+            border: 3px solid #e60012;
+            background: #0a0a15;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(230, 0, 18, 0.4);
+            transition: all 0.2s;
+        }
+
+        .mode-card:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+            border-color: #00ff00;
+        }
+
+        .mode-image {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mode-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.2) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .mode-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .mode-info {
+            padding: 1rem;
+            background: #1a1a2e;
+            border-top: 2px solid #e60012;
+        }
+
+        .mode-info h3 {
+            font-size: 0.55rem;
+            color: #00ff00;
+            text-shadow: 1px 1px 0 #e60012;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .cta-section {
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, #1a1a2e, #2a1a2e);
+            border: 3px solid #e60012;
+            margin: 2rem;
+            box-shadow: inset 0 0 30px rgba(230, 0, 18, 0.3);
+        }
+
+        .cta-section h2 {
+            font-size: 1.2rem;
+            color: #00ff00;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0 #e60012;
+            letter-spacing: 0.2em;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00ff00;
+            margin: 1.5rem 0;
+            text-shadow: 2px 2px 0 #e60012, 4px 4px 0 rgba(230, 0, 18, 0.5);
+            letter-spacing: 0.15em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e60012;
+            color: #00ff00;
+            padding: 1rem 2rem;
+            border: 3px solid #00ff00;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.7rem;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            box-shadow: 0 0 20px rgba(230, 0, 18, 0.6);
+        }
+
+        .cta-button:hover {
+            background: #00ff00;
+            color: #e60012;
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.8);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #00ff00;
+            animation: blink 1s infinite;
+            margin-left: 5px;
+        }
+
+        footer {
+            background: #0a0a15;
+            color: #00ff00;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.6rem;
+            border-top: 3px solid #e60012;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .hero h2 {
+                font-size: 1rem;
+            }
+
+            .hero p {
+                font-size: 0.55rem;
+            }
+
+            .modes h2 {
+                font-size: 0.9rem;
+            }
+
+            .arcade-chips {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .chip h3 {
+                font-size: 0.5rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1rem;
+            }
+
+            .price {
+                font-size: 1.3rem;
+            }
+
+            .cta-button {
+                font-size: 0.6rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="player-tag">PLAYER 1 READY</div>
+        <h1>NINTENDO SWITCH</h1>
+        <div class="pixel-divider"></div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80&fit=crop" alt="Retro Gaming Console">
+        </div>
+        <h2>GAME ON</h2>
+        <p>THE ULTIMATE GAMING MACHINE FOR THE MODERN ERA. THREE MODES. INFINITE ADVENTURES. 1000+ GAMES AT YOUR FINGERTIPS.</p>
+    </section>
+
+    <section class="arcade-chips">
+        <div class="chip">
+            <h3>JOY-CON</h3>
+            <p>MOTION CONTROLS</p>
+        </div>
+        <div class="chip">
+            <h3>6.3" SCREEN</h3>
+            <p>HD TOUCHSCREEN</p>
+        </div>
+        <div class="chip">
+            <h3>3 MODES</h3>
+            <p>PLAY ANYWHERE</p>
+        </div>
+        <div class="chip">
+            <h3>6.5 HRS</h3>
+            <p>BATTERY LIFE</p>
+        </div>
+    </section>
+
+    <section class="modes">
+        <h2>PLAY MODES</h2>
+        <div class="modes-grid">
+            <div class="mode-card">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Mode">
+                </div>
+                <div class="mode-info">
+                    <h3>TV MODE</h3>
+                </div>
+            </div>
+            <div class="mode-card">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&fit=crop" alt="Tabletop Mode">
+                </div>
+                <div class="mode-info">
+                    <h3>TABLETOP MODE</h3>
+                </div>
+            </div>
+            <div class="mode-card">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Handheld Mode">
+                </div>
+                <div class="mode-info">
+                    <h3>HANDHELD MODE</h3>
+                </div>
+            </div>
+            <div class="mode-card">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&q=80&fit=crop" alt="Dark Gaming">
+                </div>
+                <div class="mode-info">
+                    <h3>MULTIPLAYER MODE</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>READY?</h2>
+        <div class="price">$299.99</div>
+        <button class="cta-button">ORDER NOW<span class="cursor"></span></button>
+    </section>
+
+    <footer>
+        <p>COPYRIGHT 2026 NINTENDO SWITCH</p>
+        <p>STUDENT PROJECT — NOT AFFILIATED WITH NINTENDO</p>
+    </footer>
+</body>
+</html>
