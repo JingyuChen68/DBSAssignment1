@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch Landing Page — Design Gallery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0c0c0c; color: #e0e0e0; line-height: 1.6; }
+
+        header { padding: 4rem 3rem 3rem; max-width: 900px; margin: 0 auto; text-align: center; }
+        header .tag { display: inline-block; font-size: .65rem; text-transform: uppercase; letter-spacing: 3px; color: #e60012; border: 1px solid rgba(230,0,18,.3); padding: .35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; font-weight: 600; }
+        header h1 { font-size: 3rem; font-weight: 900; line-height: 1.15; margin-bottom: 1rem; background: linear-gradient(180deg, #fff 20%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header p { color: #666; max-width: 560px; margin: 0 auto; font-size: 1rem; }
+
+        .narrative { max-width: 700px; margin: 2rem auto 0; padding: 2rem 3rem; border-left: 2px solid #e60012; }
+        .narrative p { color: #888; font-size: .92rem; line-height: 1.8; }
+
+        .phase { max-width: 1100px; margin: 4rem auto 1.5rem; padding: 0 3rem; }
+        .phase h2 { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: .25rem; }
+        .phase p { color: #555; font-size: .85rem; }
+
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+        .card { background: #161616; border: 1px solid #222; border-radius: 12px; overflow: hidden; transition: border-color .3s, transform .2s; text-decoration: none; color: inherit; display: block; }
+        .card:hover { border-color: #e60012; transform: translateY(-4px); }
+        .card-preview { width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 600; }
+        .card-body { padding: 1rem 1.25rem 1.25rem; }
+        .card-version { font-size: .6rem; text-transform: uppercase; letter-spacing: 2px; color: #e60012; font-weight: 700; margin-bottom: .3rem; }
+        .card-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .3rem; }
+        .card-desc { font-size: .8rem; color: #666; line-height: 1.5; }
+
+        /* Preview theme colors */
+        .p-modern { background: linear-gradient(135deg, #fff, #f5f5f5); color: #e60012; }
+        .p-brutal { background: #fff; border-bottom: 4px solid #000; color: #000; font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 3px; }
+        .p-dark { background: linear-gradient(135deg, #0a0a0f, #1a1a25); color: #ff3c5f; }
+        .p-editorial { background: #faf9f6; color: #bbb; font-style: italic; font-family: Georgia, serif; }
+        .p-retro { background: #1a1a2e; color: #e60012; font-family: monospace; }
+        .p-playful { background: linear-gradient(135deg, #ffe0e0, #e0f0ff, #e0ffe0); color: #ff6b6b; }
+        .p-zen { background: #f7f5f0; color: #ccc; font-family: Georgia, serif; }
+        .p-split { background: linear-gradient(90deg, #e60012 50%, #0077c8 50%); color: #fff; }
+        .p-newspaper { background: #f4f1eb; color: #222; font-family: Georgia, serif; font-style: italic; }
+        .p-glass { background: linear-gradient(135deg, #667eea, #764ba2, #f5576c); color: rgba(255,255,255,.8); }
+        .p-darkedit { background: linear-gradient(135deg, #0c0c0f, #1a1a20); color: #c9a96e; font-family: Georgia, serif; }
+        .p-neonretro { background: #0a0a12; color: #ff2d55; font-family: monospace; text-shadow: 0 0 8px #ff2d55; }
+        .p-zenglss { background: linear-gradient(135deg, #f5c6aa, #c8b6ff); color: rgba(255,255,255,.9); font-family: Georgia, serif; }
+        .p-cleansplit { background: #fff; color: #e60012; border-bottom: 3px solid #0077c8; }
+        .p-darknews { background: #111; color: #f0ece4; font-family: Georgia, serif; font-style: italic; }
+        .p-conv1 { background: #0c0c0f; color: #e60012; }
+        .p-conv2 { background: #0c0c0f; color: #d4a853; }
+        .p-conv3 { background: #0f0f12; color: #d4a853; }
+        .p-conv4 { background: #0f0f12; color: #e60012; }
+        .p-final { background: linear-gradient(180deg, #0f0f12, #141418); color: #e60012; font-family: Georgia, serif; }
+
+        .final-pick { max-width: 800px; margin: 4rem auto; padding: 3rem; border: 1px solid #e60012; border-radius: 16px; text-align: center; background: linear-gradient(180deg, rgba(230,0,18,.05), transparent); }
+        .final-pick h2 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: .75rem; }
+        .final-pick p { color: #888; font-size: .9rem; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+        .final-pick a { display: inline-block; margin-top: 1.5rem; padding: .75rem 2rem; background: #e60012; color: #fff; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: .9rem; transition: transform .2s; }
+        .final-pick a:hover { transform: translateY(-2px); }
+
+        footer { text-align: center; padding: 3rem; color: #333; font-size: .75rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="tag">MPCS 51238 — Assignment 1</div>
+        <h1>Nintendo Switch<br>Landing Page Exploration</h1>
+        <p>25 iterations exploring layouts, moods, and visual styles for a Nintendo Switch product page. From wild experimentation to refined convergence.</p>
+    </header>
+    <div class="narrative">
+        <p>This project starts wide — radically different aesthetics, tones, and audiences — then narrows as patterns emerge. Versions 1–10 explore wildly different directions. Versions 11–15 start mixing the best elements. Versions 16–19 converge on a dark editorial gaming aesthetic. Versions 20–25 refine small details until v25 feels just right.</p>
+    </div>
+
+    <!-- PHASE 1 -->
+    <div class="phase"><h2>Phase 1 — Go Wide (v1–v10)</h2><p>Exploring radically different directions: layout, mood, typography, audience.</p></div>
+    <div class="gallery">
+        <a class="card" href="v1/index.html"><div class="card-preview p-modern">Clean & Modern</div><div class="card-body"><div class="card-version">Version 01</div><div class="card-title">Clean Modern — Nintendo Style</div><div class="card-desc">Red/white brand colors, rounded buttons, friendly typography. The safe starting point.</div></div></a>
+        <a class="card" href="v2/index.html"><div class="card-preview p-brutal">BRUTALIST</div><div class="card-body"><div class="card-version">Version 02</div><div class="card-title">Brutalist Typography</div><div class="card-desc">Thick borders, monospace type, stark black & white. What if Nintendo went anti-design?</div></div></a>
+        <a class="card" href="v3/index.html"><div class="card-preview p-dark">Dark Neon</div><div class="card-body"><div class="card-version">Version 03</div><div class="card-title">Dark Gaming Aesthetic</div><div class="card-desc">Deep blacks, neon gradients, glowing CTAs. Razer meets Nintendo.</div></div></a>
+        <a class="card" href="v4/index.html"><div class="card-preview p-editorial">Editorial</div><div class="card-body"><div class="card-version">Version 04</div><div class="card-title">Magazine Editorial</div><div class="card-desc">Serif headlines, whitespace, muted palette. The Switch as a lifestyle object.</div></div></a>
+        <a class="card" href="v5/index.html"><div class="card-preview p-retro">RETRO ►</div><div class="card-body"><div class="card-version">Version 05</div><div class="card-title">Retro Nostalgic</div><div class="card-desc">Pixel fonts, scanlines, arcade vibes. Nintendo history through a NES-era lens.</div></div></a>
+        <a class="card" href="v6/index.html"><div class="card-preview p-playful">Play. Share. Smile.</div><div class="card-body"><div class="card-version">Version 06</div><div class="card-title">Colorful Playful</div><div class="card-desc">Rainbow gradients, bubbly font, game bubbles. Targeting families and casual gamers.</div></div></a>
+        <a class="card" href="v7/index.html"><div class="card-preview p-zen">遊 — Zen</div><div class="card-body"><div class="card-version">Version 07</div><div class="card-title">Japanese Zen Minimal</div><div class="card-desc">Noto Serif JP, kanji accents, wabi-sabi palette. The Switch as philosophy.</div></div></a>
+        <a class="card" href="v8/index.html"><div class="card-preview p-split">L | R</div><div class="card-body"><div class="card-version">Version 08</div><div class="card-title">Split-Screen Bold</div><div class="card-desc">Red/blue Joy-Con split. Dual CTAs, comparison table. The concept IS the visual.</div></div></a>
+        <a class="card" href="v9/index.html"><div class="card-preview p-newspaper">The Switch Times</div><div class="card-body"><div class="card-version">Version 09</div><div class="card-title">Newspaper Print</div><div class="card-desc">Baskerville serif, column layout, masthead, pull quotes. Old media, new console.</div></div></a>
+        <a class="card" href="v10/index.html"><div class="card-preview p-glass">Glassmorphism</div><div class="card-body"><div class="card-version">Version 10</div><div class="card-title">Glassmorphism UI</div><div class="card-desc">Vibrant gradient, frosted glass cards, backdrop-filter blur. Apple meets Nintendo.</div></div></a>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase"><h2>Phase 2 — Narrow Down (v11–v15)</h2><p>Mixing the best elements from Phase 1. The dark aesthetic and editorial typography kept drawing me back.</p></div>
+    <div class="gallery">
+        <a class="card" href="v11/index.html"><div class="card-preview p-darkedit">Dark + Editorial</div><div class="card-body"><div class="card-version">Version 11</div><div class="card-title">Dark + Editorial Fusion</div><div class="card-desc">v3's dark canvas meets v4's serif typography. Gold accents. Luxury gaming.</div></div></a>
+        <a class="card" href="v12/index.html"><div class="card-preview p-neonretro">NEON ► RETRO</div><div class="card-body"><div class="card-version">Version 12</div><div class="card-title">Neon + Retro Mashup</div><div class="card-desc">v3's glow effects with v5's pixel font. Dual neon accents — red and electric blue.</div></div></a>
+        <a class="card" href="v13/index.html"><div class="card-preview p-zenglss">間 — Glass</div><div class="card-body"><div class="card-version">Version 13</div><div class="card-title">Zen + Glassmorphism</div><div class="card-desc">v7's philosophy meets v10's frosted glass. Warm peach-to-lavender gradient.</div></div></a>
+        <a class="card" href="v14/index.html"><div class="card-preview p-cleansplit">Clean + Split</div><div class="card-body"><div class="card-version">Version 14</div><div class="card-title">Modern Clean + Split Concept</div><div class="card-desc">v1's approachability with v8's red/blue split. Clean cards, comparison table.</div></div></a>
+        <a class="card" href="v15/index.html"><div class="card-preview p-darknews">Dark News</div><div class="card-body"><div class="card-version">Version 15</div><div class="card-title">Newspaper + Dark Mode</div><div class="card-desc">v9's editorial layout inverted to dark. Cream text on black. Premium night reading.</div></div></a>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase"><h2>Phase 3 — Converge (v16–v19)</h2><p>The dark editorial direction won out. Now testing accent colors, hero layouts, and section arrangements.</p></div>
+    <div class="gallery">
+        <a class="card" href="v16/index.html"><div class="card-preview p-conv1">Dark Editorial — Red</div><div class="card-body"><div class="card-version">Version 16</div><div class="card-title">Dark Editorial, Red Accent</div><div class="card-desc">The foundation: dark bg, Playfair + Inter, Nintendo red, centered hero, glass cards.</div></div></a>
+        <a class="card" href="v17/index.html"><div class="card-preview p-conv2">Testing: Gold</div><div class="card-body"><div class="card-version">Version 17</div><div class="card-title">Testing Warm Gold Accent</div><div class="card-desc">Same layout as v16 but swapping to gold (#d4a853). Does it feel more premium?</div></div></a>
+        <a class="card" href="v18/index.html"><div class="card-preview p-conv3">Two-Col Hero</div><div class="card-body"><div class="card-version">Version 18</div><div class="card-title">Two-Column Hero Test</div><div class="card-desc">Testing split hero layout. Timeline-style modes. Warmer dark background.</div></div></a>
+        <a class="card" href="v19/index.html"><div class="card-preview p-conv4">Hybrid</div><div class="card-body"><div class="card-version">Version 19</div><div class="card-title">Hybrid — Getting Close</div><div class="card-desc">Centered hero (better), warmer bg (keep), red accent (more Nintendo). Added pullquote.</div></div></a>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase"><h2>Phase 4 — Refine (v20–v25)</h2><p>Same page, tiny tweaks. Typography, button shapes, hover effects, spacing. Polishing until it feels right.</p></div>
+    <div class="gallery">
+        <a class="card" href="v20/index.html"><div class="card-preview p-final">v20 — Base</div><div class="card-body"><div class="card-version">Version 20</div><div class="card-title">Converged Base Design</div><div class="card-desc">The template: dark editorial, red accent, centered hero, glass cards, modes grid.</div></div></a>
+        <a class="card" href="v21/index.html"><div class="card-preview p-final">v21 — Headline</div><div class="card-body"><div class="card-version">Version 21</div><div class="card-title">Headline + Spacing Tweak</div><div class="card-desc">Alternate headline. More hero padding. Left-border cards. Numbered modes.</div></div></a>
+        <a class="card" href="v22/index.html"><div class="card-preview p-final">v22 — Glow</div><div class="card-body"><div class="card-version">Version 22</div><div class="card-title">Hero Glow + Hover Effects</div><div class="card-desc">Original headline back. Radial gradient glow. Hover glow on cards. Larger stats.</div></div></a>
+        <a class="card" href="v23/index.html"><div class="card-preview p-final">v23 — Type</div><div class="card-body"><div class="card-version">Version 23</div><div class="card-title">Typography Refinement</div><div class="card-desc">Tighter h1, larger pull quote, stats border. Testing square CTA button.</div></div></a>
+        <a class="card" href="v24/index.html"><div class="card-preview p-final">v24 — Motion</div><div class="card-body"><div class="card-version">Version 24</div><div class="card-title">Button Polish + Motion</div><div class="card-desc">Rounded CTA back. Subtle pulse animation. Taller game tiles. Lighter subtitle.</div></div></a>
+        <a class="card" href="v25/index.html"><div class="card-preview p-final">v25 — Final ★</div><div class="card-body"><div class="card-version">Version 25 — Final</div><div class="card-title">The Final Design</div><div class="card-desc">Smooth scroll. Sticky blurred nav. Fade-in sections. The polished culmination.</div></div></a>
+    </div>
+
+    <div class="final-pick">
+        <h2>Final Pick — Version 25</h2>
+        <p>After exploring 10 wildly different directions, mixing the best elements, converging on a dark editorial gaming aesthetic, and refining typography, spacing, and interactions — v25 brings it all together. The dark background lets the content breathe, Playfair Display adds editorial sophistication, and the Nintendo red keeps it unmistakably gaming.</p>
+        <a href="v25/index.html">View Final Design →</a>
+    </div>
+
+    <footer>MPCS 51238 — Design, Build, Ship — Spring 2026 — Student Project — Not Affiliated with Nintendo</footer>
+</body>
+</html>
