@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch | Game Without Boundaries</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0f0f12;
+            color: #e8e8e8;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 2rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(230, 0, 18, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e60012;
+            letter-spacing: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #b8b8b8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            margin: 2rem auto;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Stats Row */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            border-top: 1px solid rgba(230, 0, 18, 0.1);
+            border-bottom: 1px solid rgba(230, 0, 18, 0.1);
+        }
+
+        .stat {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e60012;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Pull Quote - Full Width */
+        .pullquote {
+            padding: 4rem 2rem;
+            background-color: rgba(230, 0, 18, 0.05);
+            border-left: 4px solid #e60012;
+            text-align: center;
+            width: 100%;
+            margin: 3rem 0;
+        }
+
+        .pullquote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pullquote-source {
+            font-size: 0.9rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: #1a1a1f;
+            padding: 2rem;
+            border-top: 3px solid #e60012;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #b8b8b8;
+            font-size: 0.95rem;
+        }
+
+        /* Play Modes Section - 2 Column Grid */
+        .modes-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .modes-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .modes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .mode {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .mode:nth-child(3) {
+            grid-column: 1 / -1;
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .mode-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .mode-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .mode-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .mode-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .mode-text p {
+            color: #b8b8b8;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Games Section */
+        .games-section {
+            padding: 3rem 2rem;
+            background-color: #0c0c0f;
+            margin: 3rem 0;
+        }
+
+        .games-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .games-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #ffffff;
+        }
+
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .game-tile {
+            background-color: #1a1a1f;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .game-tile:hover {
+            border-color: #e60012;
+        }
+
+        .game-tile-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .game-tile h4 {
+            font-size: 0.9rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .game-tile p {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #e60012;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #e60012;
+            color: #ffffff;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #cc000f;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(230, 0, 18, 0.1);
+            color: #777;
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-title,
+            .modes-title {
+                font-size: 2rem;
+            }
+
+            .modes {
+                grid-template-columns: 1fr;
+            }
+
+            .mode:nth-child(3) {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 3rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">NINTENDO SWITCH</div>
+    </header>
+
+    <section class="hero">
+        <h1>Game Without Boundaries</h1>
+        <p>Experience the ultimate in flexible gaming. Play docked, handheld, or tabletop — your console adapts to your lifestyle.</p>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80&fit=crop" alt="Nintendo Switch Gaming">
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat">
+            <div class="stat-number">50M+</div>
+            <div class="stat-label">Players Worldwide</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">5K+</div>
+            <div class="stat-label">Games Library</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Years Supported</div>
+        </div>
+    </section>
+
+    <section class="pullquote">
+        <div class="pullquote-text">"The most innovative gaming device ever created — seamlessly blending home and portable play."</div>
+        <div class="pullquote-source">— Gaming Editorial, 2023</div>
+    </section>
+
+    <section class="features-section">
+        <h2 class="features-title">What Makes Switch Unique</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Hybrid Design</h3>
+                <p>Transform your gaming experience instantly. Dock it for TV play, detach controllers for handheld mode, or use tabletop for shared experiences.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Massive Game Library</h3>
+                <p>From indie gems to AAA blockbusters, access thousands of titles spanning every genre imaginable. Play what you want, when you want.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Play Anywhere</h3>
+                <p>6-hour battery life lets you game on your commute, at home, or while traveling. Always connected, always ready for adventure.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="modes-section">
+        <h2 class="modes-title">Three Play Modes</h2>
+        <div class="modes">
+            <div class="mode">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Mode">
+                </div>
+                <div class="mode-text">
+                    <h3>TV Mode</h3>
+                    <p>Dock your console and play on the big screen with full HD graphics and enhanced performance.</p>
+                </div>
+            </div>
+            <div class="mode">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Handheld Mode">
+                </div>
+                <div class="mode-text">
+                    <h3>Handheld Mode</h3>
+                    <p>Built-in screen and detachable controllers deliver a complete gaming experience wherever you go.</p>
+                </div>
+            </div>
+            <div class="mode">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&fit=crop" alt="Tabletop Mode">
+                </div>
+                <div class="mode-text">
+                    <h3>Tabletop Mode</h3>
+                    <p>Stand the console up and share gaming moments with friends using detached Joy-Con controllers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="games-section">
+        <div class="games-container">
+            <h3 class="games-title">Featured Games</h3>
+            <div class="games">
+                <div class="game-tile">
+                    <div class="game-tile-icon">🎮</div>
+                    <h4>Legend of Zelda</h4>
+                    <p>Adventure</p>
+                </div>
+                <div class="game-tile">
+                    <div class="game-tile-icon">⭐</div>
+                    <h4>Super Mario</h4>
+                    <p>Platformer</p>
+                </div>
+                <div class="game-tile">
+                    <div class="game-tile-icon">🏎️</div>
+                    <h4>Mario Kart</h4>
+                    <p>Racing</p>
+                </div>
+                <div class="game-tile">
+                    <div class="game-tile-icon">👨‍👩‍👧‍👦</div>
+                    <h4>Mario Party</h4>
+                    <p>Party</p>
+                </div>
+                <div class="game-tile">
+                    <div class="game-tile-icon">🦸</div>
+                    <h4>Metroid Prime</h4>
+                    <p>Action</p>
+                </div>
+                <div class="game-tile">
+                    <div class="game-tile-icon">🐢</div>
+                    <h4>Donkey Kong</h4>
+                    <p>Adventure</p>
+                </div>
+                <div class="game-tile">
+                    <div class="game-tile-icon">🛸</div>
+                    <h4>Kirby's Dream</h4>
+                    <p>Platformer</p>
+                </div>
+                <div class="game-tile">
+                    <div class="game-tile-icon">🎯</div>
+                    <h4>Splatoon</h4>
+                    <p>Shooter</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Play?</h2>
+        <div class="price">$299.99</div>
+        <button class="cta-button">Get Your Switch Now</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Nintendo. All rights reserved.</p>
+        <p>Nintendo Switch is a trademark of Nintendo. Prices and availability subject to change.</p>
+        <p>Games sold separately. Online play requires Nintendo Switch Online subscription.</p>
+    </footer>
+</body>
+</html>
