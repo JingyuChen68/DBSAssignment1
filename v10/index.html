@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch - Next Generation Gaming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            margin-left: 2.5rem;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem 0 4rem 0;
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.1em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            text-shadow: none;
+            letter-spacing: 0.05em;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
+
+        .hero-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+            display: block;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .modes-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            letter-spacing: -0.02em;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .mode-card {
+            padding: 2.5rem;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mode-card:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .mode-image {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .mode-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .mode-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mode-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .features-section {
+            padding: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .specs-section {
+            padding: 4rem 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .spec-card {
+            padding: 2rem;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .spec-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .spec-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section,
+            .modes-grid,
+            .features-grid,
+            .specs-section,
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title,
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            header {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SWITCH</div>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#modes">Play Modes</a>
+            <a href="#specs">Specs</a>
+            <a href="#order">Order</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-text">
+                <div class="hero-badge">NEXT GENERATION GAMING</div>
+                <h1>Play Without Limits</h1>
+                <p>Experience the future of gaming with three play modes that adapt to your lifestyle. From your living room to your pocket, take your games everywhere.</p>
+                <a href="#order" class="cta-button">Get Yours Today</a>
+            </div>
+            <div class="hero-image glass-strong">
+                <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80&fit=crop" alt="Nintendo Switch">
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stat-card glass">
+                <div class="stat-number">6.2"</div>
+                <div class="stat-label">Vibrant Display</div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-number">32GB</div>
+                <div class="stat-label">Storage</div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-number">5-9h</div>
+                <div class="stat-label">Battery Life</div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Games</div>
+            </div>
+        </section>
+    </div>
+
+    <section class="modes-section">
+        <div class="container">
+            <h2 class="section-title" id="modes">Three Ways to Play</h2>
+            <div class="modes-grid">
+                <div class="mode-card glass-strong">
+                    <div class="mode-image">
+                        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Mode">
+                    </div>
+                    <h3>TV Mode</h3>
+                    <p>Dock your console and play on the big screen. The included dock supports full HD output, perfect for multiplayer gaming and immersive single-player experiences.</p>
+                </div>
+
+                <div class="mode-card glass-strong">
+                    <div class="mode-image">
+                        <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Handheld Mode">
+                    </div>
+                    <h3>Handheld Mode</h3>
+                    <p>Attach the Joy-Cons and take gaming on the go. The 6.2-inch display delivers stunning visuals wherever you are, whenever you want to play.</p>
+                </div>
+
+                <div class="mode-card glass-strong">
+                    <div class="mode-image">
+                        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&fit=crop" alt="Tabletop Mode">
+                    </div>
+                    <h3>Tabletop Mode</h3>
+                    <p>Stand your console and play together. The built-in kickstand enables local multiplayer gaming anywhere—home, coffee shops, or outdoor adventures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title" id="features">Innovation You Can Feel</h2>
+            <div class="features-grid">
+                <div class="feature-card glass-strong">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Joy-Con Revolution</h3>
+                    <p>Detachable wireless controllers with HD rumble feedback. Motion controls and gyro sensing enable unprecedented gameplay possibilities.</p>
+                </div>
+
+                <div class="feature-card glass-strong">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Powerful Performance</h3>
+                    <p>Custom NVIDIA Tegra processor delivers console-quality graphics. 4GB RAM and 32GB expandable storage for your entire game library.</p>
+                </div>
+
+                <div class="feature-card glass-strong">
+                    <div class="feature-icon">📱</div>
+                    <h3>Connected Gaming</h3>
+                    <p>Wi-Fi, Bluetooth, and USB-C connectivity keep you online. Play with friends locally or globally across thousands of titles.</p>
+                </div>
+
+                <div class="feature-card glass-strong">
+                    <div class="feature-icon">🔋</div>
+                    <h3>All-Day Battery</h3>
+                    <p>Play for 5.5 to 9 hours on a single charge. Fast USB-C charging gets you back in the game in minutes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="modes-section">
+        <div class="container">
+            <h2 class="section-title" id="specs">Cutting-Edge Specs</h2>
+            <div class="specs-section" style="padding: 0;">
+                <div class="spec-card glass-strong">
+                    <h4>Display Technology</h4>
+                    <p>6.2-inch LCD capacitive touchscreen with 1280 × 720 resolution and vibrant color reproduction.</p>
+                </div>
+
+                <div class="spec-card glass-strong">
+                    <h4>Processing Power</h4>
+                    <p>Custom NVIDIA Tegra processor, 4GB RAM, and 32GB internal storage expandable via microSD up to 2TB.</p>
+                </div>
+
+                <div class="spec-card glass-strong">
+                    <h4>Connectivity</h4>
+                    <p>Wi-Fi 802.11AC, Bluetooth 4.1 wireless communication, and USB-C for charging and data transfer.</p>
+                </div>
+
+                <div class="spec-card glass-strong">
+                    <h4>Audio & Feedback</h4>
+                    <p>Built-in speakers with crystal-clear audio and HD rumble technology for immersive tactile feedback.</p>
+                </div>
+
+                <div class="spec-card glass-strong">
+                    <h4>Game Library</h4>
+                    <p>Access to thousands of games instantly. Compatible with Nintendo Switch Online for multiplayer and classic titles.</p>
+                </div>
+
+                <div class="spec-card glass-strong">
+                    <h4>Design & Build</h4>
+                    <p>Lightweight and durable construction with detachable Joy-Cons and adjustable kickstand for flexible gameplay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 id="order">Start Your Adventure Today</h2>
+            <p>Experience gaming freedom. Pre-order now for just $299.99</p>
+            <a href="#" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Nintendo Switch Landing Page. Student Project — Not Affiliated with Nintendo.</p>
+    </footer>
+</body>
+</html>
