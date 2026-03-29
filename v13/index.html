@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch — Zen & Glassmorphism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5c6aa 0%, #e8b4a0 50%, #c8b6ff 100%);
+            color: #2c2c3c;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 40px 60px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .logo {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #5a4a7a;
+            letter-spacing: 2px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 100px 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: #5a4a7a;
+        }
+
+        .kanji-decoration {
+            font-size: 18px;
+            color: #d9a88c;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: #4a4a5a;
+            margin-bottom: 20px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            filter: sepia(0.1) brightness(1.05) saturate(0.9);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(90, 74, 122, 0.7);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            padding: 16px 40px;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid rgba(90, 74, 122, 0.3);
+            cursor: pointer;
+            font-size: 15px;
+            border-radius: 12px;
+            margin-top: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .cta-button:hover {
+            background: rgba(90, 74, 122, 0.9);
+            border-color: rgba(90, 74, 122, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(90, 74, 122, 0.2);
+        }
+
+        .philosophy-section {
+            padding: 100px 60px;
+            text-align: center;
+        }
+
+        .philosophy-quote {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: #5a4a7a;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .philosophy-text {
+            font-size: 15px;
+            color: #4a4a5a;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.9;
+        }
+
+        .modes-section {
+            padding: 100px 60px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .mode-glass {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .mode-glass:hover {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(90, 74, 122, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .mode-glass h3 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #5a4a7a;
+            margin-bottom: 20px;
+        }
+
+        .mode-glass p {
+            font-size: 15px;
+            color: #4a4a5a;
+            line-height: 1.7;
+        }
+
+        .features-section {
+            padding: 100px 60px;
+        }
+
+        .features-section h2 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 42px;
+            font-weight: 900;
+            text-align: center;
+            color: #5a4a7a;
+            margin-bottom: 70px;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .feature-row:nth-child(even) {
+            direction: rtl;
+        }
+
+        .feature-row:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .feature-text h3 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #5a4a7a;
+            margin-bottom: 20px;
+        }
+
+        .feature-text p {
+            font-size: 15px;
+            color: #4a4a5a;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            filter: sepia(0.1) brightness(1.05) saturate(0.9);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .spec-glass {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .spec-glass h4 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #5a4a7a;
+            margin-bottom: 12px;
+        }
+
+        .spec-glass p {
+            font-size: 14px;
+            color: #4a4a5a;
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 50px 60px;
+            text-align: center;
+            font-size: 13px;
+            color: #5a4a7a;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        footer a {
+            color: #5a4a7a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">任天堂</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <div class="kanji-decoration">遊 | 技 | 心</div>
+            <h1>Play, Explore, Connect</h1>
+            <p>A handheld console designed with the philosophy of "wa" — harmony between technology and play.</p>
+            <p>Nintendo Switch transforms how you game, whether docked, portable, or tabletop.</p>
+            <button class="cta-button">Discover — $299.99</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80&fit=crop" alt="Nintendo Switch">
+        </div>
+    </section>
+
+    <section class="philosophy-section">
+        <div class="philosophy-quote">The art of flexibility meets purposeful design.</div>
+        <div class="philosophy-text">
+            Where Eastern contemplation meets Western innovation. Switch isn't just a console — it's a bridge between moments, spaces, and experiences. Play when you want. How you want. Where you want.
+        </div>
+    </section>
+
+    <section class="modes-section">
+        <div class="mode-glass">
+            <h3>📺 TV Mode</h3>
+            <p>Immerse yourself in the full console experience. Dock and connect to your television for the ultimate visual journey.</p>
+        </div>
+        <div class="mode-glass">
+            <h3>✋ Handheld</h3>
+            <p>True portability. Take your games anywhere. In your hands, in your pocket, on your terms.</p>
+        </div>
+        <div class="mode-glass">
+            <h3>🎮 Tabletop</h3>
+            <p>Stand it up. Share the screen. A moment of connection with those around you.</p>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <h2>Thoughtful Design</h2>
+
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>TV Mode</h3>
+                <p>Dock your Switch and transform any television into your gaming space. The console scales seamlessly, delivering HD visuals on larger displays.</p>
+                <p>Perfect for immersive single-player adventures or multiplayer sessions with friends and family.</p>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Gaming">
+            </div>
+        </div>
+
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>Handheld Gaming</h3>
+                <p>The freedom to play untethered. With a 6.3-inch screen and intuitive controls, gaming follows you wherever life takes you.</p>
+                <p>Commutes, travels, or simply moving between rooms — your adventure never has to stop.</p>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Handheld Mode">
+            </div>
+        </div>
+
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>Tabletop Experience</h3>
+                <p>A middle path. Set the console down, detach the Joy-Cons, and share the moment with others or play solo on a propped screen.</p>
+                <p>Intimate gaming in shared spaces, without the isolation of handheld or the setup of TV mode.</p>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&fit=crop" alt="Tabletop Mode">
+            </div>
+        </div>
+
+        <div class="specs-grid">
+            <div class="spec-glass">
+                <h4>Display & Graphics</h4>
+                <p>6.2-inch touchscreen with 720p HD resolution. NVIDIA Tegra processor delivers smooth, responsive gameplay.</p>
+            </div>
+            <div class="spec-glass">
+                <h4>Performance & Speed</h4>
+                <p>Custom hardware engineered for 3 distinct play modes. Seamless transitions between TV, handheld, and tabletop.</p>
+            </div>
+            <div class="spec-glass">
+                <h4>Battery Life</h4>
+                <p>Up to 6.5 hours of continuous handheld play on a single charge. Extended battery models available.</p>
+            </div>
+            <div class="spec-glass">
+                <h4>Connectivity</h4>
+                <p>WiFi, Bluetooth, online multiplayer. Play solo or connect with millions of players worldwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Student Project — Not Affiliated with Nintendo, Inc.</p>
+    </footer>
+</body>
+</html>
