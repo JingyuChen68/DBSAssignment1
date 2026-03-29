@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch - Left vs Right</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: white;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 2rem 3rem;
+            background: white;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        nav a {
+            margin-left: 3rem;
+            text-decoration: none;
+            color: #666;
+            font-weight: 600;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+        }
+
+        nav a:hover {
+            color: #e60012;
+        }
+
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+        }
+
+        .hero-left {
+            background: #e60012;
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+        }
+
+        .hero-right {
+            background: #0077c8;
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+        }
+
+        .hero-left h1,
+        .hero-right h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+        }
+
+        .hero-left p,
+        .hero-right p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #e60012;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 3px solid white;
+            width: fit-content;
+        }
+
+        .hero-right .cta-button {
+            color: #0077c8;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: scale(1.05);
+        }
+
+        .modes-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .modes-container {
+            display: space-between;
+        }
+
+        .mode-section {
+            margin-bottom: 4rem;
+        }
+
+        .mode-section:nth-child(odd) .mode-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .mode-section:nth-child(even) .mode-grid {
+            grid-template-columns: 1fr 1fr;
+            direction: rtl;
+        }
+
+        .mode-section:nth-child(even) .mode-grid > * {
+            direction: ltr;
+        }
+
+        .mode-grid {
+            display: grid;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .mode-text h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .mode-text p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .features-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #e60012;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .mode-section:nth-child(even) .features-list li:before {
+            color: #0077c8;
+        }
+
+        .mode-image {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .mode-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .comparison-section {
+            background: #f5f5f5;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .comparison-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .comparison-container h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .comp-header {
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #e60012;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .comp-header:nth-child(2) {
+            border-bottom-color: #e60012;
+        }
+
+        .comp-header:nth-child(3) {
+            border-bottom-color: #0077c8;
+        }
+
+        .comp-row {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .comp-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .specs-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .spec-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #e60012;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .spec-card:nth-child(even) {
+            border-left-color: #0077c8;
+        }
+
+        .spec-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .spec-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-split {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-left,
+            .hero-right {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-left h1,
+            .hero-right h1 {
+                font-size: 2.2rem;
+            }
+
+            .mode-section:nth-child(even) .mode-grid {
+                direction: ltr;
+            }
+
+            .mode-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .section-title,
+            .comparison-container h2 {
+                font-size: 1.8rem;
+            }
+
+            .comparison-table {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.75rem;
+            }
+
+            header, .modes-section, .specs-section, .comparison-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">SWITCH</div>
+            <nav>
+                <a href="#modes">Modes</a>
+                <a href="#specs">Specs</a>
+                <a href="#compare">Compare</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-split">
+        <div class="hero-left">
+            <h1>LEFT<br>JOY-CON</h1>
+            <p>Red side: Intuitive control. Wireless freedom. Connected gaming.</p>
+            <a href="#buy" class="cta-button">Order Now</a>
+        </div>
+        <div class="hero-right">
+            <h1>RIGHT<br>JOY-CON</h1>
+            <p>Blue side: Precision gaming. Extended battery. Ultimate performance.</p>
+            <a href="#buy" class="cta-button">Order Now</a>
+        </div>
+    </section>
+
+    <section class="modes-section" id="modes">
+        <h2 class="section-title">Three Play Modes</h2>
+
+        <div class="mode-section">
+            <div class="mode-grid">
+                <div class="mode-text">
+                    <h2>TV Mode</h2>
+                    <p>Dock your console and experience gaming on the big screen. Includes Joy-Con grip for extended comfort and traditional gamepad-style play.</p>
+                    <ul class="features-list">
+                        <li>Full HD 1920×1080 output</li>
+                        <li>Connected to power for extended sessions</li>
+                        <li>Supports up to 4 Joy-Con wireless controllers</li>
+                        <li>Perfect for multiplayer gaming with friends</li>
+                    </ul>
+                </div>
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Mode">
+                </div>
+            </div>
+        </div>
+
+        <div class="mode-section">
+            <div class="mode-grid">
+                <div class="mode-text">
+                    <h2>Handheld Mode</h2>
+                    <p>Attach Joy-Cons to the sides and take your games anywhere. Play on the go with the portable 6.2-inch display and built-in speakers.</p>
+                    <ul class="features-list">
+                        <li>6.2-inch LCD capacitive touchscreen</li>
+                        <li>5.5 to 9 hours battery life</li>
+                        <li>Built-in microphone and speakers</li>
+                        <li>USB-C for rapid charging</li>
+                    </ul>
+                </div>
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Handheld Mode">
+                </div>
+            </div>
+        </div>
+
+        <div class="mode-section">
+            <div class="mode-grid">
+                <div class="mode-text">
+                    <h2>Tabletop Mode</h2>
+                    <p>Use the adjustable stand to prop up your console. Share your screen with others and play together—perfect for parties and social gaming.</p>
+                    <ul class="features-list">
+                        <li>Durable built-in kickstand</li>
+                        <li>Detach Joy-Cons for individual play</li>
+                        <li>Shared screen experience</li>
+                        <li>Ideal for local multiplayer games</li>
+                    </ul>
+                </div>
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&fit=crop" alt="Tabletop Mode">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison-section" id="compare">
+        <div class="comparison-container">
+            <h2>Switch vs Switch Lite</h2>
+            <div class="comparison-table">
+                <div class="comp-header">Feature</div>
+                <div class="comp-header">Switch</div>
+                <div class="comp-header">Switch Lite</div>
+
+                <div class="comp-row"><span class="comp-label">Display</span></div>
+                <div class="comp-row">6.2" LCD</div>
+                <div class="comp-row">5.5" LCD</div>
+
+                <div class="comp-row"><span class="comp-label">TV Dock</span></div>
+                <div class="comp-row">✓ Included</div>
+                <div class="comp-row">✗ Not supported</div>
+
+                <div class="comp-row"><span class="comp-label">Battery Life</span></div>
+                <div class="comp-row">5.5-9 hours</div>
+                <div class="comp-row">5.5 hours</div>
+
+                <div class="comp-row"><span class="comp-label">Price</span></div>
+                <div class="comp-row">$299.99</div>
+                <div class="comp-row">$199.99</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs-section">
+        <h2 class="section-title">Technical Specifications</h2>
+        <div class="specs-grid">
+            <div class="spec-card">
+                <h3>Processor</h3>
+                <p>NVIDIA Custom Tegra processor. Powerful enough for console-quality games.</p>
+            </div>
+            <div class="spec-card">
+                <h3>Memory</h3>
+                <p>4GB RAM, 32GB internal storage. Expandable with microSD cards up to 2TB.</p>
+            </div>
+            <div class="spec-card">
+                <h3>Display</h3>
+                <p>6.2-inch 1280×720 LCD touchscreen with variable refresh rate.</p>
+            </div>
+            <div class="spec-card">
+                <h3>Audio</h3>
+                <p>Built-in speakers with HD rumble feedback technology for immersive experiences.</p>
+            </div>
+            <div class="spec-card">
+                <h3>Connectivity</h3>
+                <p>Wi-Fi 802.11AC, Bluetooth 4.1 wireless, USB-C charging and data.</p>
+            </div>
+            <div class="spec-card">
+                <h3>Compatibility</h3>
+                <p>Plays thousands of games. Compatible with most Joy-Con accessories.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Nintendo Switch Landing Page. Student Project — Not Affiliated with Nintendo.</p>
+    </footer>
+</body>
+</html>
