@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch — Dark Editorial Luxury</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0c0f;
+            color: #e8e8e8;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 40px 60px;
+            background: linear-gradient(135deg, #0c0c0f 0%, #1a1a1f 100%);
+            border-bottom: 1px solid #c9a96e;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #c9a96e;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 100px 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: #b8b8b8;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border: 1px solid #c9a96e;
+            filter: sepia(0.15) contrast(1.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #c9a96e, #b89d5f);
+            color: #0c0c0f;
+            padding: 16px 40px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            border-radius: 2px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(201, 169, 110, 0.25);
+        }
+
+        .quote-section {
+            padding: 80px 60px;
+            background: #151519;
+            border-top: 1px solid #c9a96e;
+            border-bottom: 1px solid #c9a96e;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #c9a96e;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .quote-attribution {
+            font-size: 14px;
+            color: #999;
+            font-style: italic;
+        }
+
+        .features {
+            padding: 100px 60px;
+        }
+
+        .features h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 60px;
+            color: #ffffff;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .feature-row:nth-child(even) {
+            direction: rtl;
+        }
+
+        .feature-row:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .feature-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #c9a96e;
+        }
+
+        .feature-text p {
+            font-size: 15px;
+            color: #c0c0c0;
+            margin-bottom: 15px;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border: 1px solid #c9a96e;
+            filter: sepia(0.15) contrast(1.1);
+        }
+
+        .modes {
+            padding: 100px 60px;
+            background: #151519;
+            border-top: 1px solid #c9a96e;
+        }
+
+        .modes h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 60px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .mode-card {
+            background: #0c0c0f;
+            padding: 40px;
+            border: 1px solid #c9a96e;
+            text-align: center;
+        }
+
+        .mode-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #c9a96e;
+            margin-bottom: 15px;
+        }
+
+        .mode-card p {
+            font-size: 14px;
+            color: #a8a8a8;
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 40px 60px;
+            background: #000000;
+            border-top: 1px solid #c9a96e;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        footer a {
+            color: #c9a96e;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SWITCH</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Where Play Meets Luxury</h1>
+            <p>The Nintendo Switch — a revolution in portable gaming. Experience the pinnacle of console innovation, designed for those who refuse to compromise.</p>
+            <button class="cta-button">Pre-Order Now — $299.99</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80&fit=crop" alt="Nintendo Switch Gaming">
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="quote-text">"Gaming transcends boundaries. The Switch is where flexibility meets performance."</div>
+        <div class="quote-attribution">— A Gamer's Philosophy</div>
+    </section>
+
+    <section class="features">
+        <h2>Play Your Way</h2>
+
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>TV Mode</h3>
+                <p>Dock your Switch and experience full immersion on your television. Stunning visuals, seamless connectivity, uncompromised performance.</p>
+                <p>Perfect for living room gaming sessions where comfort and scale matter.</p>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Mode Gaming">
+            </div>
+        </div>
+
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>Handheld Mode</h3>
+                <p>Gaming untethered. Your Switch transforms into a portable powerhouse, ready for adventure anywhere, anytime.</p>
+                <p>The freedom to play on your terms — whether commuting, traveling, or simply moving between rooms.</p>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Handheld Gaming">
+            </div>
+        </div>
+
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>Tabletop Mode</h3>
+                <p>Set it and play. A middle ground between full-screen immersion and portable freedom.</p>
+                <p>Perfect for gaming sessions with friends, multiplayer moments, or solo gaming in unconventional spaces.</p>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&fit=crop" alt="Tabletop Mode">
+            </div>
+        </div>
+    </section>
+
+    <section class="modes">
+        <h2>Three Distinct Experiences</h2>
+        <div class="modes-grid">
+            <div class="mode-card">
+                <h3>Original</h3>
+                <p>The classic Switch experience. Full flexibility across all three play modes with standard performance.</p>
+            </div>
+            <div class="mode-card">
+                <h3>Switch Lite</h3>
+                <p>Designed for handheld gaming. Lightweight, portable, and purely for solo or local multiplayer adventures.</p>
+            </div>
+            <div class="mode-card">
+                <h3>Switch OLED</h3>
+                <p>The ultimate visual experience. Premium OLED display paired with the full tri-mode flexibility.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Student Project — Not Affiliated with Nintendo, Inc.</p>
+    </footer>
+</body>
+</html>
