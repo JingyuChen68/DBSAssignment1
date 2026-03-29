@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Switch Times — Newspaper Dark Mode</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: #111111;
+            color: #f0ece4;
+            line-height: 1.8;
+        }
+
+        header {
+            padding: 50px 80px;
+            background: #0a0a0a;
+            border-bottom: 3px solid #f0ece4;
+            border-top: 10px solid #f0ece4;
+        }
+
+        .masthead {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .masthead h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #f0ece4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .masthead .tagline {
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: #999;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .date-line {
+            text-align: center;
+            font-size: 11px;
+            color: #777;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 60px 80px;
+            background: #0f0f0f;
+            border-bottom: 2px solid #f0ece4;
+        }
+
+        .hero-text h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #f0ece4;
+            margin-bottom: 25px;
+        }
+
+        .hero-text .lead {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .hero-text p {
+            font-size: 15px;
+            color: #bbb;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border: 2px solid #f0ece4;
+            filter: grayscale(0.4) contrast(1.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #f0ece4;
+            color: #f0ece4;
+            padding: 12px 30px;
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 13px;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: #f0ece4;
+            color: #111111;
+        }
+
+        .sidebar {
+            padding: 30px;
+            background: #0a0a0a;
+            border: 2px solid #333;
+        }
+
+        .sidebar h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #f0ece4;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .sidebar-stat {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #222;
+        }
+
+        .sidebar-stat:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-stat .number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #f0ece4;
+            display: block;
+        }
+
+        .sidebar-stat .label {
+            font-size: 11px;
+            color: #777;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 60px;
+            padding: 60px 80px;
+        }
+
+        .main-column h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #f0ece4;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .main-column p {
+            font-size: 15px;
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .main-column .byline {
+            font-size: 12px;
+            color: #777;
+            font-style: italic;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .pull-quote {
+            margin: 40px 0;
+            padding: 30px;
+            background: #0a0a0a;
+            border-left: 4px solid #f0ece4;
+            border-right: 4px solid #f0ece4;
+        }
+
+        .pull-quote p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #f0ece4;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .feature-image img {
+            width: 100%;
+            margin: 40px 0;
+            border: 2px solid #f0ece4;
+            filter: grayscale(0.4) contrast(1.1);
+        }
+
+        .feature-caption {
+            font-size: 12px;
+            color: #777;
+            font-style: italic;
+            margin-top: -10px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-column h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #f0ece4;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .sidebar-feature {
+            margin-bottom: 35px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid #222;
+        }
+
+        .sidebar-feature:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-feature h4 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0ece4;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-feature p {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.7;
+        }
+
+        .three-column-section {
+            padding: 60px 80px;
+            background: #0a0a0a;
+            border-top: 2px solid #f0ece4;
+            border-bottom: 2px solid #f0ece4;
+        }
+
+        .three-column-section h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #f0ece4;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .three-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .column-box {
+            padding: 30px;
+            border: 1px solid #333;
+        }
+
+        .column-box h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #f0ece4;
+            margin-bottom: 15px;
+        }
+
+        .column-box p {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        footer {
+            padding: 40px 80px;
+            background: #000000;
+            border-top: 3px solid #f0ece4;
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+        }
+
+        footer a {
+            color: #777;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="masthead">
+            <h1>THE SWITCH TIMES</h1>
+            <div class="tagline">YOUR SOURCE FOR CONSOLE GAMING INTELLIGENCE</div>
+        </div>
+        <div class="date-line">Friday, March 28, 2026 | Evening Edition</div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-text">
+            <h2>The Handheld Revolution That Changed Gaming Forever</h2>
+            <div class="lead">Nintendo's audacious tri-modal console has reshaped how players experience games across home, portable, and tabletop formats.</div>
+            <p>Since its introduction, the Nintendo Switch has fundamentally altered the gaming landscape. By seamlessly transitioning between TV-docked, handheld, and tabletop modes, the console proved that flexibility and power need not be mutually exclusive.</p>
+            <p>Industry analysts credit the Switch with revitalizing Nintendo's market position and inspiring a new generation of hybrid gaming devices.</p>
+            <button class="cta-button">Order Your Console — $299.99</button>
+        </div>
+        <div class="sidebar">
+            <h3>By The Numbers</h3>
+            <div class="sidebar-stat">
+                <span class="number">140M+</span>
+                <span class="label">Units Sold Globally</span>
+            </div>
+            <div class="sidebar-stat">
+                <span class="number">6,500+</span>
+                <span class="label">Available Titles</span>
+            </div>
+            <div class="sidebar-stat">
+                <span class="number">6.5h</span>
+                <span class="label">Battery Life</span>
+            </div>
+            <div class="sidebar-stat">
+                <span class="number">3</span>
+                <span class="label">Play Modes</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-grid">
+        <div class="main-column">
+            <h2>A Device Without Compromise</h2>
+            <div class="byline">Analysis by a Gaming Correspondent | Gaming Culture Desk</div>
+
+            <p>The Nintendo Switch arrived at an inflection point in gaming history. Home consoles had grown increasingly powerful, yet handheld gaming stagnated under the shadow of smartphone dominance. Into this gap stepped Nintendo with an unorthodox proposition: a single device that could be everything.</p>
+
+            <p>The engineering achievement cannot be overstated. By leveraging the NVIDIA Tegra X1 chipset, Nintendo created a console capable of delivering HD graphics whether docked to a television or held in the palm of your hand. The modular Joy-Con design enabled unprecedented flexibility without sacrificing performance.</p>
+
+            <div class="pull-quote">
+                <p>"The Switch proved that innovation doesn't require choosing between power and portability. Instead, it asks: why choose at all?"</p>
+            </div>
+
+            <p>What truly set the Switch apart was not raw horsepower, but philosophical clarity. Rather than chase technological supremacy, Nintendo prioritized accessibility and versatility. The result was a device that welcomed casual players and hardcore enthusiasts alike.</p>
+
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80&fit=crop" alt="Nintendo Switch Console">
+                <div class="feature-caption">The Nintendo Switch: Three ways to play, one unified experience.</div>
+            </div>
+
+            <p>From the docking station that transforms the portable device into a home console, to the kickstand that enables tabletop play, every design decision serves the core philosophy: flexibility. The Switch doesn't force you into a single gaming context. Instead, it adapts to your life.</p>
+
+            <p>The library that followed validated this approach. Nintendo exclusives—Zelda: Breath of the Wild, Super Mario Odyssey, Animal Crossing—demonstrated that hybrid gaming could deliver world-class experiences. Third-party developers followed, proving that the architecture could support both indie innovations and AAA productions.</p>
+
+            <p>As the gaming industry continues to evolve, the Switch's influence remains undeniable. It proved that a device need not fit neatly into existing categories to achieve market dominance. Sometimes, the boldest innovations come not from incremental improvements, but from fundamental rethinking of what gaming could be.</p>
+        </div>
+
+        <div class="sidebar-column">
+            <h3>Play Modes Explained</h3>
+
+            <div class="sidebar-feature">
+                <h4>📺 TV Mode</h4>
+                <p>Dock your Switch and connect to a television for the ultimate immersive gaming experience. Perfect for multiplayer sessions and story-driven adventures.</p>
+            </div>
+
+            <div class="sidebar-feature">
+                <h4>✋ Handheld Mode</h4>
+                <p>Detach the Joy-Cons and take your gaming with you. Play anywhere, anytime, without losing a single frame of performance.</p>
+            </div>
+
+            <div class="sidebar-feature">
+                <h4>🎮 Tabletop Mode</h4>
+                <p>Set it down, prop it up, and play. The middle ground between full immersion and pure portability, perfect for gaming with friends.</p>
+            </div>
+
+            <h3 style="margin-top: 35px;">Key Specs</h3>
+
+            <div class="sidebar-feature">
+                <h4>Display</h4>
+                <p>6.2" touchscreen LCD with 720p HD resolution for vibrant visuals in any lighting.</p>
+            </div>
+
+            <div class="sidebar-feature">
+                <h4>Processor</h4>
+                <p>Custom NVIDIA Tegra X1 engineered for power efficiency and performance optimization.</p>
+            </div>
+
+            <div class="sidebar-feature">
+                <h4>Storage</h4>
+                <p>32GB internal with microSD card support for libraries of thousands of games.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="three-column-section">
+        <h2>Choose Your Experience</h2>
+        <div class="three-columns">
+            <div class="column-box">
+                <h3>Nintendo Switch</h3>
+                <p>The original tri-modal console. Full flexibility across all three play modes. Standard performance, broad game library, and timeless design. The choice of players who value versatility.</p>
+                <p style="margin-top: 15px; font-weight: 600;">$299.99</p>
+            </div>
+            <div class="column-box">
+                <h3>Switch Lite</h3>
+                <p>Designed for pure handheld gaming. Lightweight, compact, and affordable. Perfect for solo players and those on the go. Built for portable adventures without the docking capability.</p>
+                <p style="margin-top: 15px; font-weight: 600;">$199.99</p>
+            </div>
+            <div class="column-box">
+                <h3>Switch OLED</h3>
+                <p>The premium experience. Gorgeous 7-inch OLED display with vibrant colors and true blacks. All three play modes with enhanced visual fidelity. The ultimate Switch for visual enthusiasts.</p>
+                <p style="margin-top: 15px; font-weight: 600;">$349.99</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Student Project — Not Affiliated with Nintendo, Inc. | All copyrights and trademarks property of Nintendo Co., Ltd.</p>
+    </footer>
+</body>
+</html>
