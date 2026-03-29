@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Switch Times - Breaking Gaming News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f4f1eb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        .masthead {
+            background: white;
+            padding: 2rem 2rem 1rem;
+            border-bottom: 3px solid #222;
+            margin-bottom: 0;
+        }
+
+        .masthead-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 1rem;
+        }
+
+        .masthead h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.3rem;
+            color: #222;
+        }
+
+        .masthead-tagline {
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .masthead-date {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        .header-strip {
+            background: white;
+            padding: 0.8rem 2rem;
+            border-bottom: 2px solid #222;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-strip-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-main {
+            background: white;
+            padding: 2rem;
+            border-left: 6px solid #222;
+            column-count: 2;
+            column-gap: 1.5rem;
+        }
+
+        .article-main h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #222;
+            column-span: all;
+            line-height: 1.3;
+        }
+
+        .article-byline {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+            column-span: all;
+            font-style: italic;
+        }
+
+        .dropcap {
+            float: left;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 0.8;
+            margin-right: 0.3rem;
+            margin-top: 0.1rem;
+            color: #222;
+        }
+
+        .article-main p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .pull-quote {
+            background: #f4f1eb;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #222;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #333;
+            column-span: all;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-box {
+            background: white;
+            padding: 1.5rem;
+            border-top: 3px solid #222;
+        }
+
+        .sidebar-box h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #222;
+        }
+
+        .stat-box {
+            background: #222;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .sidebar-list {
+            list-style: none;
+        }
+
+        .sidebar-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-list li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-list strong {
+            color: #222;
+        }
+
+        .image-caption {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #999;
+            margin-bottom: 1.5rem;
+        }
+
+        .image-caption img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 0.8rem;
+            border-radius: 2px;
+        }
+
+        .caption-text {
+            font-size: 0.85rem;
+            color: #777;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .separator {
+            text-align: center;
+            margin: 2.5rem 0;
+            font-size: 1.5rem;
+            color: #ccc;
+            font-weight: 700;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .story-card {
+            background: white;
+            border-left: 3px solid #222;
+            padding: 1.5rem;
+        }
+
+        .story-card h4 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            color: #222;
+        }
+
+        .story-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .story-img {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 2px;
+        }
+
+        .story-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .article-main {
+                column-count: 1;
+            }
+
+            .masthead h1 {
+                font-size: 2.2rem;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-strip-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="masthead">
+        <div class="masthead-content">
+            <div class="masthead-tagline">VOL. 2026 • NO. 847</div>
+            <h1>THE SWITCH TIMES</h1>
+            <div class="masthead-tagline">Gaming's Most Trusted Source Since 2017</div>
+            <div class="masthead-date">March 28, 2026 — Friday Edition</div>
+        </div>
+    </div>
+
+    <div class="header-strip">
+        <div class="header-strip-content">
+            <span>Nintendo Switch | Gaming Industry | Reviews & Analysis</span>
+            <span>Price: $299.99</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <article class="article-main">
+                <h2>Nintendo Switch Continues Gaming Revolution With Innovative Play Modes</h2>
+                <div class="article-byline">By Staff Writer | March 28, 2026</div>
+
+                <p><span class="dropcap">N</span>intendo's groundbreaking Switch console has redefined portable gaming since its launch, offering unprecedented flexibility with three distinct play modes that adapt to any lifestyle or gaming preference. The hybrid system combines cutting-edge technology with elegant design, creating an experience that resonates with gamers of all ages.</p>
+
+                <p>The console's most distinguishing feature is its adaptability. Users can seamlessly transition between TV mode—where the Switch docks to display games on a large screen—handheld mode for portable gaming, and tabletop mode using the built-in kickstand. This versatility has become the gold standard for modern gaming devices.</p>
+
+                <div class="pull-quote">
+                    "The Switch represents the future of gaming—a device that meets players wherever they are, whenever they want to play."
+                </div>
+
+                <p>With a 6.2-inch LCD display, the Switch delivers vibrant visuals whether connected to a television or played on the go. The innovative Joy-Con controllers offer unprecedented interaction methods, from traditional gamepad controls to motion-based gameplay that has spawned entirely new genres of interactive entertainment.</p>
+
+                <p>The device's library has grown to encompass thousands of titles, from exclusive Nintendo franchises like Mario and Zelda to popular third-party releases. This diverse catalog ensures that there's something for every player, whether they seek hardcore competitive gaming or casual family fun.</p>
+
+                <p>At $299.99, the Switch represents exceptional value in the gaming market. The device's durability, combined with its extensive game library and innovative features, has made it one of the most successful gaming consoles of all time. Industry analysts continue to praise Nintendo's commitment to innovation and player experience.</p>
+
+                <p>As gaming continues to evolve, the Nintendo Switch stands as a testament to thoughtful design and player-centric innovation. Its hybrid nature and diverse gaming library ensure that it will remain relevant for years to come, continuing to delight millions of players worldwide.</p>
+            </article>
+
+            <aside class="sidebar">
+                <div class="sidebar-box">
+                    <h3>Key Stats</h3>
+                    <div class="stat-box">
+                        <div class="stat-number">6.2"</div>
+                        <div class="stat-label">Display Diagonal</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">32GB</div>
+                        <div class="stat-label">Storage</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">5.5-9h</div>
+                        <div class="stat-label">Battery Life</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-box">
+                    <h3>Specs At a Glance</h3>
+                    <ul class="sidebar-list">
+                        <li><strong>Processor:</strong> Custom Tegra</li>
+                        <li><strong>RAM:</strong> 4GB</li>
+                        <li><strong>Resolution:</strong> 1280×720</li>
+                        <li><strong>Weight:</strong> 6.2 oz</li>
+                        <li><strong>Colors:</strong> Red, Blue, White</li>
+                    </ul>
+                </div>
+
+                <div class="image-caption">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&q=80&fit=crop" alt="Switch Lifestyle">
+                    <div class="caption-text">The Switch adapts to your lifestyle, whether gaming at home or on the move.</div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="separator">✦ ✦ ✦</div>
+
+        <div>
+            <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.8rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em;">More Gaming News</h3>
+            <div class="story-grid">
+                <div class="story-card">
+                    <div class="story-img">
+                        <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&q=80&fit=crop" alt="Console Joy-Cons">
+                    </div>
+                    <h4>Joy-Con Innovation Sets Gaming Standard</h4>
+                    <p>Advanced HD rumble technology and motion controls revolutionize player interaction, creating immersive gaming experiences never before possible.</p>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-img">
+                        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Mode Gaming">
+                    </div>
+                    <h4>Docking Revolution: Gaming on the Big Screen</h4>
+                    <p>The included dock transforms handheld play into console-quality big-screen gaming, supporting full HD output for competitive multiplayer sessions.</p>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-img">
+                        <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Portable Gaming">
+                    </div>
+                    <h4>Portable Gaming Redefined for Modern Players</h4>
+                    <p>Extended battery life and full game compatibility make the Switch the ultimate portable gaming device for players who live on the move.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 THE SWITCH TIMES. Student Project — Not Affiliated with Nintendo.</p>
+    </footer>
+</body>
+</html>
