@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch - Dark Neon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 107, 53, 0.8), 0 0 20px rgba(255, 107, 53, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 107, 53, 1), 0 0 30px rgba(255, 107, 53, 0.7); }
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.5), inset 0 0 20px rgba(255, 107, 53, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.8), inset 0 0 30px rgba(255, 107, 53, 0.2); }
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(230, 0, 18, 0.2), rgba(255, 107, 53, 0.1));
+            border-bottom: 1px solid rgba(255, 107, 53, 0.3);
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #ff6b35, #e60012);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 0 auto 2rem;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #1a1a2e;
+            border: 2px solid rgba(255, 107, 53, 0.5);
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.3);
+            animation: pulse-border 3s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff6b35, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #a0a0a0;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            padding: 3rem 2rem;
+            background: rgba(255, 107, 53, 0.05);
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 1.8rem;
+            color: #ff6b35;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        .stat p {
+            font-size: 0.85rem;
+            color: #808080;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .features {
+            padding: 3rem 2rem;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ff6b35, #e60012);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(30, 30, 45, 0.8), rgba(40, 40, 60, 0.8));
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            padding: 1.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(255, 107, 53, 0.7);
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .feature-card h3 {
+            color: #ff6b35;
+            font-size: 1.1rem;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #909090;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .modes {
+            padding: 3rem 2rem;
+            background: rgba(255, 107, 53, 0.03);
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .modes h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ff6b35, #e60012);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .mode-card {
+            background: #1a1a2e;
+            border: 1px solid rgba(255, 107, 53, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mode-card:hover {
+            border-color: #ff6b35;
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .mode-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .mode-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .mode-info {
+            padding: 1.2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(230, 0, 18, 0.1), rgba(255, 107, 53, 0.1));
+            border-top: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .mode-info h3 {
+            color: #ff6b35;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        .mode-info p {
+            color: #808080;
+            font-size: 0.85rem;
+        }
+
+        .cta-section {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff6b35, #e60012);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+            color: #ff6b35;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35, #e60012);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: 2px solid #ff6b35;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.6);
+            color: #808080;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        footer p {
+            margin: 0.3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .modes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nintendo Switch</h1>
+    </header>
+
+    <section class="hero">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80&fit=crop" alt="Nintendo Switch">
+        </div>
+        <h2>Experience the Future of Gaming</h2>
+        <p>Hybrid gaming reimagined. Play anywhere. Play your way. Switch between three flexible modes and unlock endless possibilities.</p>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stat">
+            <h3>6.3"</h3>
+            <p>Display</p>
+        </div>
+        <div class="stat">
+            <h3>3</h3>
+            <p>Play Modes</p>
+        </div>
+        <div class="stat">
+            <h3>6.5HR</h3>
+            <p>Battery</p>
+        </div>
+        <div class="stat">
+            <h3>1000+</h3>
+            <p>Games</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Joy-Con Innovation</h3>
+                <p>Detachable controllers with HD rumble feedback and motion sensors for revolutionary gameplay experiences.</p>
+            </div>
+            <div class="feature-card">
+                <h3>All-In-One Display</h3>
+                <p>Vibrant 6.3" capacitive touchscreen with 720p resolution. Play solo or with friends, anywhere.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Online Gaming</h3>
+                <p>Nintendo Switch Online membership unlocks multiplayer, classic games, and exclusive benefits.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="modes">
+        <h2>Three Play Modes</h2>
+        <div class="modes-grid">
+            <div class="mode-card">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Mode">
+                </div>
+                <div class="mode-info">
+                    <h3>TV Mode</h3>
+                    <p>Dock and play on your big screen</p>
+                </div>
+            </div>
+            <div class="mode-card">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&fit=crop" alt="Tabletop">
+                </div>
+                <div class="mode-info">
+                    <h3>Tabletop Mode</h3>
+                    <p>Stand it up and share with friends</p>
+                </div>
+            </div>
+            <div class="mode-card">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Handheld">
+                </div>
+                <div class="mode-info">
+                    <h3>Handheld Mode</h3>
+                    <p>Play anywhere with extended battery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Level Up?</h2>
+        <div class="price">$299.99</div>
+        <button class="cta-button">SHOP NOW</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Nintendo Switch Landing Page</p>
+        <p>Student Project — Not Affiliated with Nintendo</p>
+    </footer>
+</body>
+</html>
