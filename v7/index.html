@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch - 遊びの始まり</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f7f5f0;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        header {
+            padding: 2rem 3rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.15em;
+        }
+
+        .tagline {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.1rem;
+            color: #999;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .kanji-decoration {
+            font-size: 4rem;
+            opacity: 0.15;
+            position: absolute;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+        }
+
+        .kanji-1 {
+            top: 5rem;
+            right: 3%;
+            transform: rotate(-15deg);
+        }
+
+        .kanji-2 {
+            top: 30%;
+            left: 2%;
+            transform: rotate(25deg);
+        }
+
+        .kanji-3 {
+            bottom: 10%;
+            right: 5%;
+            transform: rotate(-10deg);
+        }
+
+        header {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            color: #333;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            line-height: 1.9;
+        }
+
+        .zen-concept {
+            background: rgba(200, 180, 160, 0.2);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid #999;
+            font-style: italic;
+            color: #777;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .cta-button:hover {
+            background: #666;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            filter: grayscale(30%);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .modes-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: #999;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .modes-list {
+            space-between: 3rem;
+        }
+
+        .mode-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .mode-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .mode-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .mode-number {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 3rem;
+            color: #999;
+            font-weight: 700;
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+        }
+
+        .mode-content {
+            position: relative;
+            padding-top: 1rem;
+        }
+
+        .mode-content h3 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .mode-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .mode-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 2px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            filter: grayscale(25%);
+        }
+
+        .mode-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .specs-section {
+            background: white;
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .specs-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .specs-container h2 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .spec-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .spec-item h3 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .spec-item p {
+            color: #777;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section,
+            .mode-item {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .hero-text h1,
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kanji-decoration {
+                font-size: 2.5rem;
+            }
+
+            header, .hero-section, .modes-section, .specs-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="kanji-decoration kanji-1">遊</div>
+    <div class="kanji-decoration kanji-2">間</div>
+    <div class="kanji-decoration kanji-3">始</div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">Nintendo Switch</div>
+            <p class="tagline">遊びの新しい形</p>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-text">
+            <h1>自由な遊びへの誘い</h1>
+            <p>「間」という日本の美学がここにあります。プレイ方法を選ぶ自由、ゲームを楽しむ時間、友人との共有の瞬間。すべての「間」を満たすための設計です。</p>
+            <div class="zen-concept">
+                「遊びは生きる喜び。その喜びをあらゆる場面で。」
+            </div>
+            <a href="#buy" class="cta-button">詳細を見る • ¥29,980</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80&fit=crop" alt="Nintendo Switch Console">
+        </div>
+    </section>
+
+    <section class="modes-section">
+        <div class="section-header">
+            <h2>三つの遊びの形</h2>
+            <p>「モード」を変えるように生きる場所を変える</p>
+        </div>
+
+        <div class="modes-list">
+            <div class="mode-item">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Mode">
+                </div>
+                <div class="mode-content">
+                    <div class="mode-number">一</div>
+                    <h3>テレビモード</h3>
+                    <p>リビングの大画面で、家族や友人との時間を共有します。付属のドックとJoy-Con Gripで、本格的なゲーム体験を実現します。</p>
+                </div>
+            </div>
+
+            <div class="mode-item">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Handheld Mode">
+                </div>
+                <div class="mode-content">
+                    <div class="mode-number">二</div>
+                    <h3>携帯モード</h3>
+                    <p>6.2インチの画面を手に持ち、いつでもどこでも遊びを続けます。Joy-Conを付けたら、あなたのゲーム世界が始まります。</p>
+                </div>
+            </div>
+
+            <div class="mode-item">
+                <div class="mode-image">
+                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&fit=crop" alt="Tabletop Mode">
+                </div>
+                <div class="mode-content">
+                    <div class="mode-number">三</div>
+                    <h3>テーブルモード</h3>
+                    <p>スタンドで立たせて、机の上で遊ぶ。分かち合う喜び、一緒に笑う時間。そこには「間」が生まれます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs-section">
+        <div class="specs-container">
+            <h2>仕様</h2>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <h3>画面</h3>
+                    <p>6.2インチ有機EL<br>1280 × 720解像度</p>
+                </div>
+                <div class="spec-item">
+                    <h3>バッテリー</h3>
+                    <p>約5.5～9時間<br>持続時間</p>
+                </div>
+                <div class="spec-item">
+                    <h3>ストレージ</h3>
+                    <p>32GB内部記憶<br>microSD対応</p>
+                </div>
+                <div class="spec-item">
+                    <h3>接続</h3>
+                    <p>Wi-Fi・Bluetooth<br>USB-C対応</p>
+                </div>
+                <div class="spec-item">
+                    <h3>コントローラー</h3>
+                    <p>Joy-Con<br>HD振動対応</p>
+                </div>
+                <div class="spec-item">
+                    <h3>ゲームライブラリ</h3>
+                    <p>数千のゲーム<br>即座にアクセス</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Nintendo Switch Landing Page. Student Project — Not Affiliated with Nintendo.</p>
+    </footer>
+</body>
+</html>
