@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nintendo Switch - Game Without Boundaries</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f12;
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 6rem 2rem;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(135deg, rgba(230, 0, 18, 0.03) 0%, rgba(230, 0, 18, 0.01) 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(230, 0, 18, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(230, 0, 18, 0.2);
+      border: 1px solid rgba(230, 0, 18, 0.5);
+      color: #ff6b6b;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: #a0a0a0;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-weight: 400;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: #e60012;
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 24px rgba(230, 0, 18, 0.3);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-cta:hover {
+      background: #d50010;
+      box-shadow: 0 12px 36px rgba(230, 0, 18, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Stats Section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-item {
+      padding: 1rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #e60012;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #808080;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Pull Quote Section */
+    .pull-quote {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      border-left: 4px solid #e60012;
+      padding-left: 2.5rem;
+    }
+
+    .pull-quote p {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #d0d0d0;
+      margin-bottom: 0.5rem;
+    }
+
+    .pull-quote-author {
+      font-size: 0.9rem;
+      color: #808080;
+      font-style: normal;
+    }
+
+    /* Feature Cards */
+    .features {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .features h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 30px rgba(230, 0, 18, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #a0a0a0;
+      line-height: 1.7;
+    }
+
+    /* Play Modes Section */
+    .modes {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .modes h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .mode-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 300px;
+      display: flex;
+      align-items: flex-end;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .mode-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .mode-card img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .mode-content {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+      width: 100%;
+      padding: 2rem;
+    }
+
+    .mode-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .mode-card p {
+      font-size: 0.9rem;
+      color: #d0d0d0;
+    }
+
+    /* Games Section */
+    .games {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .games h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .game-tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .game-tile {
+      aspect-ratio: 3/4;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      align-items: flex-end;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-tile:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: #e60012;
+      transform: translateY(-4px);
+    }
+
+    .game-tile::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8));
+    }
+
+    .game-title {
+      position: relative;
+      z-index: 1;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: rgba(230, 0, 18, 0.05);
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      color: #e60012;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #161620;
+      color: #e60012;
+      padding: 1rem 2.5rem;
+      border: 2px solid #e60012;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cta-button:hover {
+      background: #e60012;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background: #0a0a0d;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: #808080;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #e60012;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ff6b6b;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .features h2, .modes h2, .games h2, .cta-section h2 {
+        font-size: 2rem;
+      }
+      .hero {
+        padding: 3rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <span class="hero-tag">ULTIMATE GAMING DEVICE</span>
+    <h1>Game Without Boundaries</h1>
+    <p class="hero-subtitle">Experience gaming freedom like never before. Play at home, on the go, or anywhere in between.</p>
+    <button class="hero-cta">Shop Now</button>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&q=80&fit=crop" alt="Nintendo Switch">
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stat-item">
+      <div class="stat-number">4000+</div>
+      <div class="stat-label">Games Available</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">140M+</div>
+      <div class="stat-label">Units Sold</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Play Modes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">9h</div>
+      <div class="stat-label">Battery Life</div>
+    </div>
+  </section>
+
+  <!-- Pull Quote Section -->
+  <section class="pull-quote">
+    <p>"The Nintendo Switch revolutionized how we think about gaming. Portable, powerful, and endlessly entertaining."</p>
+    <p class="pull-quote-author">— Gaming Today Magazine</p>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>Innovative Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎮</div>
+        <h3>Detachable Joy-Cons</h3>
+        <p>Remove the controllers and play in ways only Switch can offer. Perfect for multiplayer gaming and unique control experiences.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📺</div>
+        <h3>TV Docking</h3>
+        <p>Slide your Switch into the dock for seamless big-screen gaming. Full performance on your television with zero lag.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>All-Day Battery</h3>
+        <p>Play for up to 9 hours on a single charge. The freedom to game whenever and wherever you want.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Play Modes Section -->
+  <section class="modes">
+    <h2>Three Play Modes</h2>
+    <div class="modes-grid">
+      <div class="mode-card">
+        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&q=80&fit=crop" alt="TV Mode">
+        <div class="mode-content">
+          <h3>TV Mode</h3>
+          <p>Dock and play on your television</p>
+        </div>
+      </div>
+      <div class="mode-card">
+        <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&q=80&fit=crop" alt="Handheld Mode">
+        <div class="mode-content">
+          <h3>Handheld Mode</h3>
+          <p>Gaming freedom wherever you go</p>
+        </div>
+      </div>
+      <div class="mode-card">
+        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600&q=80&fit=crop" alt="Tabletop Mode">
+        <div class="mode-content">
+          <h3>Tabletop Mode</h3>
+          <p>Perfect for any shared experience</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Games Section -->
+  <section class="games">
+    <h2>Iconic Games</h2>
+    <div class="game-tiles">
+      <div class="game-tile"><span class="game-title">Mario Odyssey</span></div>
+      <div class="game-tile"><span class="game-title">Zelda: BOTW</span></div>
+      <div class="game-tile"><span class="game-title">Mario Kart 8</span></div>
+      <div class="game-tile"><span class="game-title">Super Smash</span></div>
+      <div class="game-tile"><span class="game-title">Animal Cross</span></div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Ready to Play?</h2>
+    <p class="price">$299.99</p>
+    <button class="cta-button">Get Nintendo Switch</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Nintendo. All rights reserved.</p>
+  </footer>
+</body>
+</html>
